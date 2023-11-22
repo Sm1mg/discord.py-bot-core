@@ -35,6 +35,7 @@ class Bot(commands.Bot):  # initiates the bots intents and on_ready event
 bot = Bot()
 
 # Custom error handler
+@bot.tree.error
 async def on_tree_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
 
 
@@ -48,8 +49,7 @@ async def on_tree_error(interaction: discord.Interaction, error: discord.app_com
     # Allows entire error to be printed without raising an exception
     # (would create an infinite loop as it would be caught by this function)
     traceback.print_exc()
-# Set error handler method
-bot.tree.on_error = on_tree_error
+
 
 
 # Ping command
