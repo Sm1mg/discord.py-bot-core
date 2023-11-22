@@ -14,9 +14,6 @@ key = os.environ.get('key')
 class Bot(commands.Bot):  # initiates the bots intents and on_ready event
     def __init__(self):
         intents = discord.Intents.default()
-        #-------------------
-        # Set command prefix
-        #-------------------
         super().__init__(command_prefix="​", intents=intents)
 
     async def setup_hook(self):
