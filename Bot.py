@@ -14,7 +14,12 @@ key = os.environ.get('key')
 class Bot(commands.Bot):  # initiates the bots intents and on_ready event
     def __init__(self):
         intents = discord.Intents.default()
-        super().__init__(command_prefix="​", intents=intents)
+        intents.message_content = True
+        #-----------
+        # Add prefix
+        #-----------
+        super().__init__(intents=intents, command_prefix="a.")
+
 
     async def setup_hook(self):
         #---------
@@ -31,30 +36,24 @@ class Bot(commands.Bot):  # initiates the bots intents and on_ready event
         
         Utils.pront("Bot is ready", lvl="OKGREEN")
 
+    async def on_command_error(self, ctx: commands.Context, exception: commands.CommandError) -> None:
+
+        
+        # Fallback default error
+        await ctx.channel.send(
+            embed=Utils.get_embed(ctx,
+                title="An error occurred.",
+                content=f'```ansi\n{exception}```'
+            )
+        )
+
 # Initialize bot object
 bot = Bot()
 
-# Custom error handler
-async def on_tree_error(interaction: discord.Interaction, error: discord.app_commands.AppCommandError):
-
-
-    # Fallback default error
-    await interaction.channel.send(
-        embed=Utils.get_embed(interaction,
-            title="An error occurred.",
-            content=f'```ansi\n{error}```'
-            )
-        )
-    # Allows entire error to be printed without raising an exception
-    # (would create an infinite loop as it would be caught by this function)
-    traceback.print_exc()
-# Set error handler method
-bot.tree.on_error = on_tree_error
-
 
 # Ping command
-@bot.tree.command(name="ping", description="Ping command")
-async def _help(interaction: discord.Interaction) -> None:
-    await Utils.send(interaction, 'Pong!')
+@bot.hybrid_command(name="ping", with_app_command = True, description="Ping command")
+async def _ping(ctx: commands.Context) -> None:
+    await Utils.send(ctx, 'Pong!')
 
 bot.run(key)

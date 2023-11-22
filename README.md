@@ -1,2 +1,2 @@
-# slash branch
-This branch contains my core bot for discord.py using slash commands
+# hybrid branch
+This branch contains my core bot for discord.py using hybrid commands
