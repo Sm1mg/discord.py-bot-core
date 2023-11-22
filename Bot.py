@@ -17,7 +17,7 @@ class Bot(commands.Bot):  # initiates the bots intents and on_ready event
         #-----------
         # Add prefix
         #-----------
-        super().__init__(intents=intents, command_prefix="a.")
+        super().__init__(intents=intents, command_prefix="TODO")
 
 
     async def setup_hook(self):
