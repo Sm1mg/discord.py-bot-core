@@ -1,14 +1,7 @@
-import asyncio
 import discord
-import math
 import random
-import time
-import yt_dlp.utils
-
 from datetime import datetime
 
-
-asyncio_tasks = set()
 
 def pront(content, lvl="DEBUG", end="\n") -> None:
     """

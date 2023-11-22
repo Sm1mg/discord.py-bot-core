@@ -1,2 +1,2 @@
-# botCore
-The base I typically use for creating a command-based Discord.py bot
+# slash branch
+This branch contains my core bot for discord.py using slash commands
