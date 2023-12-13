@@ -42,7 +42,7 @@ class Bot(commands.Bot):  # initiates the bots intents and on_ready event
         await ctx.channel.send(
             embed=Utils.get_embed(ctx,
                 title="An error occurred.",
-                content=f'```ansi\n{exception}```'
+                description=f'```ansi\n{exception}```'
             )
         )
 
