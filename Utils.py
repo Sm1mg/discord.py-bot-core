@@ -79,7 +79,7 @@ def get_embed(interaction: discord.Interaction, title: str=None, description: st
         The description of the embed. Can only be up to 4096 characters.
     url : `str` | `None` (optional)
         The URL of the embed.
-    color : `int` (optional)
+    color : `discord.Color` | `int` (optional)
         The color of the embed.
 
     Returns
@@ -115,9 +115,10 @@ async def send(interaction: discord.Interaction, title: str=None, description: s
         The description of the embed. Can only be up to 4096 characters.
     url : `str` | `None` (optional)
         The URL of the embed.
-    color : `int` (optional)
+    color : `discord.Color` | `int` (optional)
         The color of the embed.
     ephemeral : `bool` = `False` (optional)
+        Whether the message should be ephemeral
     """
     embed = get_embed(interaction, title=title, description=description, url=url, color=color)
     await interaction.response.send_message(embed=embed, ephemeral=ephemeral)
