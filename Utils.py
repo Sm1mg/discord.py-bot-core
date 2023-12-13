@@ -79,10 +79,7 @@ def get_embed(ctx: commands.Context, title: str=None, description: str=None, *, 
     url : `str` | `None` (optional)
         The URL of the embed.
     color : `discord.Color` | `int` (optional)
-
         The color of the embed.
-    progress : `bool` = `True` (optional)
-        Whether get_embed should try to automatically add the progress bar and now-playing information.
 
     Returns
     -------
@@ -119,9 +116,8 @@ async def send(ctx: commands.Context, title: str=None, description: str=None, *,
         The URL of the embed.
     color : `discord.Color` | `int` (optional)
         The color of the embed.
-    progress : `bool` = `True` (optional)
-        Whether get_embed should try to automatically add the progress bar and now-playing information.
     ephemeral : `bool` = `False` (optional)
+        Whether the message should be ephemeral
     """
     embed = get_embed(ctx, title=title, description=description, url=url, color=color)
-    await ctx.send(embed=embed, ephemeral=ephemeral)
+    await ctx.reply(embed=embed, ephemeral=ephemeral, mention_author=False)
