@@ -43,7 +43,7 @@ async def on_tree_error(interaction: discord.Interaction, error: discord.app_com
     await interaction.channel.send(
         embed=Utils.get_embed(interaction,
             title="An error occurred.",
-            content=f'```ansi\n{error}```'
+            description=f'```ansi\n{error}```'
             )
         )
     # Allows entire error to be printed without raising an exception
